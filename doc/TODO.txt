@@ -1,0 +1,13 @@
+This is a TODO file for the MysqlServer module.
+----------------------------------------------
+$Id: TODO.txt 2808 2002-06-21 20:41:00Z kkaempf $
+
+TODO:
+-----
+
+- mapping the config values to my.cnf parameters
+- Term to Function conversion (in python bindings)
+- Fix SCR.Write()
+- GUI stuff ( this really needs to be done :) )
+- documentation / help texts
+

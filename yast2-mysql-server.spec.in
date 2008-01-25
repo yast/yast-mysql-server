@@ -1,0 +1,21 @@
+@HEADER-COMMENT@
+
+@HEADER@
+BuildRequires:	python yast2 yast2-devtools yast2-testsuite
+Summary:	-
+
+%description
+-
+
+@PREP@
+
+@BUILD@
+
+@INSTALL@
+
+@CLEAN@
+
+%files
+%defattr(-,root,root)
+@scrconfdir@/*.scr
+%doc @docdir@
