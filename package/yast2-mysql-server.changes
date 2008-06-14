@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jun 14 22:54:00 CEST 2008 - mzugec@suse.de
+
+- proposed values for each dialog
+- 2.17.1 
+
+-------------------------------------------------------------------
 Sat Jun 14 17:51:45 CEST 2008 - mzugec@suse.de
 
 - fixed workflow (read->main->write)

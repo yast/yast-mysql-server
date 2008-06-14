@@ -49,7 +49,7 @@ def ShowSequenceDialog(contents, values, help, back):
 
 
 	for ID in values.keys():
-		UI.ChangeWidget( id(ID), Symbol('Value'), values[ID])
+		UI.ChangeWidget(Term('id',  ID), Symbol('Value'), values[ID])
 
 	if not back:
     		Wizard.DisableBackButton()
@@ -69,6 +69,7 @@ def ShowSequenceDialog(contents, values, help, back):
                 break
 
 	return ret;
+
 
 def ServerTypeDialog():
 	# specify how the dialog should look like
@@ -104,6 +105,8 @@ def ServerTypeDialog():
 	# bring it to the screen...
         ret = ShowSequenceDialog(contents, values, help, False);
 
+        
+    
 	# chose the settings depending on which button the user has pressed
 	selection = ServerTypeSettings[UI.QueryWidget(Term('id', 'ServerType'), Symbol('CurrentButton'))]
 
