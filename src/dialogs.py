@@ -9,18 +9,20 @@
 # $Id: defaults.py 43761 2008-01-21 10:01:31Z ckornacker $
 #
 
-from ycp import *
 
 import gettext
 from gettext import textdomain
 
 textdomain('mysql')
 
-import_module('Label')
-import_module('Wizard')
-import_module('UI')
-
+import ycp
+ycp.import_module('UI')
 from ycp import *
+ycp.widget_names()
+import Wizard
+ycp.import_module('Label')
+
+
 import Mysql
 
 from defaults import ServerTypeSettings
@@ -32,6 +34,7 @@ from defaults import SecuritySettings
 
 caption = gettext.gettext('MySQL Server Configuration')
 
+
 # ShowSequenceDialog
 # 	contents	=
 #	values		= Button/TextBox/... values
@@ -39,8 +42,10 @@ caption = gettext.gettext('MySQL Server Configuration')
 #	back		= show 'back' button or not
 
 def ShowSequenceDialog(contents, values, help, back):
-    	Wizard.SetContentsButtons(caption, contents, help, Label.BackButton(), Label.NextButton())
-    	Wizard.SetTitleIcon('yast-mysql')
+        
+#        Wizard.SetContentsButtons(caption, contents, help, Label.BackButton(), Label.NextButton())
+    	Wizard.SetContentsButtons(caption, contents, help, "", "")
+#    	Wizard.SetTitleIcon('yast-mysql')
 
 
 	for ID in values.keys():
@@ -67,18 +72,26 @@ def ShowSequenceDialog(contents, values, help, back):
 
 def ServerTypeDialog():
 	# specify how the dialog should look like
+        from ycp import *
+        ycp.widget_names()
+
     	contents = VBox(
 	     Left(Term('Label','MySQL Server Type')),
 	     VBox(
 		VSpacing(1),
 		Frame(
 		    'Server Type',
-		    RadioButtonGroup( id( 'ServerType' ),
+		    RadioButtonGroup(# id( 'ServerType' ),
 			    VBox(
-				Left( RadioButton( id( 'Developer Machine'), '&Developer Machine')),
-				Left( RadioButton( id( 'Server'), '&Server Machine')),
-				Left( RadioButton( id( 'Dedicated'), 'D&edicated Machine')),
-				Left( RadioButton( id( 'Custom'), '&Custom'))
+#				Left( RadioButton( id( 'Developer Machine'), '&Developer Machine')),
+#				Left( RadioButton( id( 'Server'), '&Server Machine')),
+#				Left( RadioButton( id( 'Dedicated'), 'D&edicated Machine')),
+#				Left( RadioButton( id( 'Custom'), '&Custom'))
+				Left( RadioButton( '&Developer Machine')),
+				Left( RadioButton( '&Server Machine')),
+				Left( RadioButton( 'D&edicated Machine')),
+				Left( RadioButton( '&Custom'))
+
 			    )
 			)
 		),

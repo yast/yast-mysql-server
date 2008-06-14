@@ -172,7 +172,8 @@ ServerFeaturesSettings = {
 				{ 'TCPIP' : UI.QueryWidget(id('TCPIP'), Symbol('CurrentButton')),
 		                  'Strict' : UI.QueryWidget(id('Strict'), Symbol('CurrentButton')) },
 				{},
-				{},
+				{}
+			      ]
 	}
 
 SecuritySettings = {
@@ -181,4 +182,5 @@ SecuritySettings = {
 				  'Anonymous' : UI.QueryWidget(id('AnonymousAccount'), Symbol('Value')) },
 				{},
 				{}
+			      ]
 	}

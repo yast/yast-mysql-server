@@ -32,8 +32,8 @@ cmdline_description = {
     'id' 	: 'mysql',
     'help'		: 'Configuration of mysql',
     'guihandler'        : wizards.MysqlSequence,
-    'initialize'        : Mysql.Read(),
-    'finish'            : Mysql.Write(),
+    'initialize'        : Code(Mysql.Read),
+    'finish'            : Code(Mysql.Write),
     'actions'           : {
     	'ports' : {
 	    'help' : 'Ports used by MySQL Server',

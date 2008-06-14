@@ -20,6 +20,7 @@ import_module('Report')
 import_module('Message')
 import_module('Wizard')
 
+
 import time
 from ycp import *
 
@@ -33,6 +34,10 @@ mysqld_vars	=  ('key_buffer', 'table_cache', 'sort_buffer_size',
 mysqldump_vars	=  ('')
 isamchk_vars	=  ('key_buffer', 'sort_buffer_size', '')
 myisamchk_vars	=  ('key_buffer', 'sort_buffer_size', '')
+client = {}
+mysqld = {}
+isamchk = {}
+myisamchk = {}
 
 def Read() :
 
@@ -160,8 +165,8 @@ def Write() :
 
 def ReadDialog():
 	
-	Wizard.RestoreHelp('Any text for help')
-	Wizard.SetTitleIcon('yast-mysql')
+#	Wizard.RestoreHelp('Any text for help')
+#	Wizard.SetTitleIcon('yast-mysql')
 	ret = Read()
 	if ret:
 		return Symbol('next')
