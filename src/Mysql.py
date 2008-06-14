@@ -175,8 +175,8 @@ def ReadDialog():
 
 
 def WriteDialog() :
-	Wizard.RestoreHelp('Any text for help 2')
-	Wizard.SetTitleIcon('yast-mysql')
+#	Wizard.RestoreHelp('Any text for help 2')
+#	Wizard.SetTitleIcon('yast-mysql')
 	ret = Write()
 	if ret:
 		return Symbol('next')

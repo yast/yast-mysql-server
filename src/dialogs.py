@@ -44,7 +44,7 @@ caption = gettext.gettext('MySQL Server Configuration')
 def ShowSequenceDialog(contents, values, help, back):
         
 #        Wizard.SetContentsButtons(caption, contents, help, Label.BackButton(), Label.NextButton())
-    	Wizard.SetContentsButtons(caption, contents, help, "", "")
+    	Wizard.SetContentsButtons(caption, contents, help, "back", "next")
 #    	Wizard.SetTitleIcon('yast-mysql')
 
 
@@ -81,23 +81,18 @@ def ServerTypeDialog():
 		VSpacing(1),
 		Frame(
 		    'Server Type',
-		    RadioButtonGroup(# id( 'ServerType' ),
+		    RadioButtonGroup(Term('id','ServerType' ),
 			    VBox(
-#				Left( RadioButton( id( 'Developer Machine'), '&Developer Machine')),
-#				Left( RadioButton( id( 'Server'), '&Server Machine')),
-#				Left( RadioButton( id( 'Dedicated'), 'D&edicated Machine')),
-#				Left( RadioButton( id( 'Custom'), '&Custom'))
-				Left( RadioButton( '&Developer Machine')),
-				Left( RadioButton( '&Server Machine')),
-				Left( RadioButton( 'D&edicated Machine')),
-				Left( RadioButton( '&Custom'))
-
+                Left( RadioButton(Term('id', 'Developer Machine'),  '&Developer Machine')),
+				Left( RadioButton(Term('id', 'Server'),  '&Server Machine')),
+				Left( RadioButton(Term('id', 'Dedicated'),  'D&edicated Machine')),
+				Left( RadioButton(Term('id', 'Custom'),  '&Custom'))
 			    )
 			)
 		),
 		VStretch()
 	     )
-	)
+    )
 
 	# default values
 	# need to be read from my.cnf
@@ -107,25 +102,28 @@ def ServerTypeDialog():
 	help = 'Server Configuration...'
 
 	# bring it to the screen...
-    	ret = ShowSequenceDialog(contents, values, help, False);
+        ret = ShowSequenceDialog(contents, values, help, False);
 
 	# chose the settings depending on which button the user has pressed
-	selection = ServerTypeSettings[UI.QueryWidget(id('ServerType'), Symbol('CurrentButton'))]
+	selection = ServerTypeSettings[UI.QueryWidget(Term('id', 'ServerType'), Symbol('CurrentButton'))]
 
 	return ret
 	
 def DatabaseUsageDialog(): 
+        from ycp import *
+        ycp.widget_names()
+
     	contents = VBox(
 	     Left(Term('Label','Database Usage')),
 	     VBox(
 		VSpacing(1),
 		Frame(
 		    'Server Features',
-		    RadioButtonGroup( id( 'DatabaseUsage' ),
+		    RadioButtonGroup( Term('id', 'DatabaseUsage' ),
 			    VBox(
-				Left( RadioButton( id( 'Multifunctional'), 'Multifunctional Database')),
-				Left( RadioButton( id( 'Transactional'), 'Transactional Database Only')),
-				Left( RadioButton( id( 'Non-Transactional'), 'Non-Transactional Database Only'))
+				Left( RadioButton(Term('id', 'Multifunctional'), 'Multifunctional Database')),
+				Left( RadioButton(Term('id',  'Transactional'), 'Transactional Database Only')),
+				Left( RadioButton( Term('id',  'Non-Transactional'), 'Non-Transactional Database Only'))
 			    )
 			)
 		),
@@ -139,25 +137,28 @@ def DatabaseUsageDialog():
 
     	ret = ShowSequenceDialog(contents, values, help, True);
 
-	selection = DatabaseUsageSettings[UI.QueryWidget(id('DatabaseUsage'), Symbol('CurrentButton'))]
+	selection = DatabaseUsageSettings[UI.QueryWidget(Term('id', 'DatabaseUsage'), Symbol('CurrentButton'))]
 
 	return ret
 
 
 def ServerConnectionsDialog(): 
+        from ycp import *
+        ycp.widget_names()
+
     	contents = VBox(
 	     Left(Term('Label','Concurrent connections to the Server')),
 	     VBox(
 		VSpacing(1),
 		Frame(
 		    'Server Features',
-		    RadioButtonGroup( id( 'ServerConnections' ),
+		    RadioButtonGroup(Term('id',  'ServerConnections' ),
 			    VBox(
-				Left( RadioButton( id( 'Decision'), '&Decision Support (DSS)/OLAP')),
-				Left( RadioButton( id( 'Online'), '&Online Transaction Processing (OLTP)')),
-				Left( RadioButton( id( 'Manual'), '&Manual Setting')),
+				Left( RadioButton(Term('id',  'Decision'), '&Decision Support (DSS)/OLAP')),
+				Left( RadioButton(Term('id',  'Online'), '&Online Transaction Processing (OLTP)')),
+				Left( RadioButton(Term('id',  'Manual'), '&Manual Setting')),
 				VBox(
-					Right( TextEntry( id( 'Connections'), '&Concurrent connections:')))
+					Right( TextEntry(Term('id',  'Connections'), '&Concurrent connections:')))
 			    )
 			)
 		),
@@ -171,11 +172,14 @@ def ServerConnectionsDialog():
 
     	ret = ShowSequenceDialog(contents, values, help, True);
 
-	selection = ServerConnectionSettings[UI.QueryWidget(id('ServerConnections'), Symbol('CurrentButton'))]
+	selection = ServerConnectionSettings[UI.QueryWidget(Term('id',  'ServerConnections'), Symbol('CurrentButton'))]
 
 	return ret
 
 def ServerNetworkingDialog():
+        from ycp import *
+        ycp.widget_names()
+
     	contents = VBox(
 	     Left(Term('Label','Networking Options')),
 	     VBox(
@@ -183,8 +187,8 @@ def ServerNetworkingDialog():
 		Frame(
 		    'Server Features',
 		    VBox(
-			Left( CheckBox( id( 'TCPIP'), 'Enable &TCP/IP Networking')),
-			Left( CheckBox( id( 'Strict'), 'Enable &Strict Mode'))
+			Left( CheckBox(Term('id',   'TCPIP'), 'Enable &TCP/IP Networking')),
+			Left( CheckBox(Term('id',  'Strict'), 'Enable &Strict Mode'))
 		    )
 		),
 		VStretch()
@@ -196,23 +200,29 @@ def ServerNetworkingDialog():
 	help = 'Server Configuration...'
 
     	ret = ShowSequenceDialog(contents, values, help, True);
+        tcpip=UI.QueryWidget(Term('id', 'TCPIP'),  Symbol('Value'))
+        print tcpip
+        CharacterSetSettings
 
 	return ret
 
 def CharacterSetDialog(): 
+        from ycp import *
+        ycp.widget_names()
+
     	contents = VBox(
 	     Left(Term('Label','Character Set')),
 	     VBox(
 		VSpacing(1),
 		Frame(
 		    'Server Features',
-		    RadioButtonGroup( id( 'CharacterSet' ),
+		    RadioButtonGroup(Term('id',  'CharacterSet' ),
 			    VBox(
-				Left( RadioButton( id( 'Standard'), '&Standard Character Set')),
-				Left( RadioButton( id( 'Multilingual'), '&Best for Multilingual Support')),
-				Left( RadioButton( id( 'Manual'), '&Manually Selected Default Character Set')),
+				Left( RadioButton(Term('id',  'Standard'), '&Standard Character Set')),
+				Left( RadioButton(Term('id',  'Multilingual'), '&Best for Multilingual Support')),
+				Left( RadioButton( Term('id',  'Manual'), '&Manually Selected Default Character Set')),
 				VBox(
-					Right( SelectionBox( id( 'charset'), 'Character Set:', [ 'latin1', 'utf8' ]))
+					Right( SelectionBox(Term('id',  'charset'), 'Character Set:', [ 'latin1', 'utf8' ]))
 				)
 			    )
 			)
@@ -227,11 +237,14 @@ def CharacterSetDialog():
 
     	ret = ShowSequenceDialog(contents, values, help, True);
 
-	selection = CharacterSetSettings[UI.QueryWidget(id('CharacterSet'), Symbol('CurrentButton'))]
+	selection = CharacterSetSettings[UI.QueryWidget(Term('id',  'CharacterSet'), Symbol('CurrentButton'))]
 
 	return ret
 
 def SecurityConfigurationDialog(): 
+        from ycp import *
+        ycp.widget_names()
+
     	contents = VBox(
 	     Left(Term('Label','Security Options')),
 	     VBox(
@@ -239,13 +252,13 @@ def SecurityConfigurationDialog():
 		Frame(
 		    'Server Features',
 		    VBox(
-			Left( CheckBox( id( 'Modify'), '&Modify MySQL Security Settings')),
+			Left( CheckBox(Term('id',  'Modify'), '&Modify MySQL Security Settings')),
 			VBox(
-				Right( Password( id( 'OldPassword'), 'Current root Password:')),
-				Right( Password( id( 'NewPassword'), 'New root Passsword:')),
-				Right( Password( id( 'Confirm'), 'Confirm new Password:'))
+				Right( Password(Term('id',  'OldPassword'), 'Current root Password:')),
+				Right( Password(Term('id', 'NewPassword'), 'New root Passsword:')),
+				Right( Password(Term('id', 'Confirm'), 'Confirm new Password:'))
 			),
-			Left( CheckBox( id( 'AnonymousAccount'), '&Create Anonymous Account')),
+			Left( CheckBox(Term('id',  'AnonymousAccount'), '&Create Anonymous Account')),
 		    )
 		),
 		VStretch()
