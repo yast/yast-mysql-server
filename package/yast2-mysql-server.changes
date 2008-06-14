@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jun 14 17:51:45 CEST 2008 - mzugec@suse.de
+
+- fix most visible bugs - module can start now
+- 2.17.0 
+
+-------------------------------------------------------------------
 Mon Jan 14 12:37:30 2008 - ckornacker@suse.de
 
 - Initial version
