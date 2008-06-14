@@ -132,7 +132,7 @@ ServerConnectionSettings = {
 		      ],
 
 	'Manual' : [ {},
-				{ 'key_buffer' : UI.QueryWidget(id('Connections'), Symbol('Value')),
+				{ 'key_buffer' : UI.QueryWidget(Term('id', 'Connections'), Symbol('Value')),
 				  'innodb_log_file_size' : '64M' },
 				{},
 				{ 'key_buffer' : '4M' },
@@ -159,7 +159,7 @@ CharacterSetSettings = {
 			      ],
 
 	'Manual' :            [ {},
-				{ 'key_buffer' : UI.QueryWidget(id('charset'), Symbol('Value')),
+				{ 'key_buffer' : UI.QueryWidget(Term('id', 'charset'), Symbol('Value')),
 				  'innodb_log_file_size' : '64M' },
 				{},
 				{ 'key_buffer' : '4M' },
@@ -169,8 +169,8 @@ CharacterSetSettings = {
 
 ServerFeaturesSettings = {
 	'all' :               [ {},
-				{ 'TCPIP' : UI.QueryWidget(id('TCPIP'), Symbol('CurrentButton')),
-		                  'Strict' : UI.QueryWidget(id('Strict'), Symbol('CurrentButton')) },
+				{ 'TCPIP' : UI.QueryWidget(Term('id', 'TCPIP'), Symbol('CurrentButton')),
+		                  'Strict' : UI.QueryWidget(Term('id', 'Strict'), Symbol('CurrentButton')) },
 				{},
 				{}
 			      ]
@@ -178,8 +178,8 @@ ServerFeaturesSettings = {
 
 SecuritySettings = {
 	'all' :		      [ {},
-				{ 'Password' : UI.QueryWidget(id('NewPassword'), Symbol('Value')),
-				  'Anonymous' : UI.QueryWidget(id('AnonymousAccount'), Symbol('Value')) },
+				{ 'Password' : UI.QueryWidget(Term('id', 'NewPassword'), Symbol('Value')),
+				  'Anonymous' : UI.QueryWidget(Term('id', 'AnonymousAccount'), Symbol('Value')) },
 				{},
 				{}
 			      ]
