@@ -1,8 +1,14 @@
 -------------------------------------------------------------------
+Sun Jun 15 17:25:48 CEST 2008 - mzugec@suse.de
+
+- store all selected items into "selected_items" ;-)
+- 2.17.3
+
+-------------------------------------------------------------------
 Sat Jun 14 22:54:00 CEST 2008 - mzugec@suse.de
 
 - proposed values for each dialog
-- 2.17.1 
+- 2.17.2 
 
 -------------------------------------------------------------------
 Sat Jun 14 17:51:45 CEST 2008 - mzugec@suse.de
