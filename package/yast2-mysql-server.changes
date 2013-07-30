@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul 30 08:29:10 UTC 2013 - yast-devel@opensuse.org
+
+- version 3.0.0
+
+-------------------------------------------------------------------
 Sun Jun 15 17:25:48 CEST 2008 - mzugec@suse.de
 
 - store all selected items into "selected_items" ;-)
